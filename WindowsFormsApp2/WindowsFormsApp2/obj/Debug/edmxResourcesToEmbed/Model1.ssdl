@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gest_de_locations_des_voituresModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="num" />
+    </Key>
+    <Property Name="num" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code postal" Type="int" />
+    <Property Name="ville" Type="nvarchar" MaxLength="50" />
+    <Property Name="rue" Type="nvarchar" MaxLength="50" />
+    <Property Name="tel" Type="nvarchar" MaxLength="50" />
+    <Property Name="num de permis " Type="nvarchar" MaxLength="50" />
+    <Property Name="date de permis" Type="date" />
+    <Property Name="cin" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="contrat">
+    <Key>
+      <PropertyRef Name="numero de contrat" />
+    </Key>
+    <Property Name="numero de contrat" Type="int" Nullable="false" />
+    <Property Name="date de depart " Type="datetime" />
+    <Property Name="date de retour " Type="datetime" />
+    <Property Name="numcl" Type="int" />
+  </EntityType>
+  <EntityType Name="facture">
+    <Key>
+      <PropertyRef Name="numero de facture " />
+    </Key>
+    <Property Name="numero de facture " Type="int" Nullable="false" />
+    <Property Name="date de facture" Type="datetime" />
+    <Property Name="compteur km" Type="int" />
+    <Property Name="montant" Type="float" />
+    <Property Name="montant a paye apres reduction" Type="float" />
+  </EntityType>
+  <EntityType Name="identite">
+    <Key>
+      <PropertyRef Name="cin" />
+    </Key>
+    <Property Name="cin" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="nom" Type="nvarchar" MaxLength="50" />
+    <Property Name="prenom" Type="nvarchar" MaxLength="50" />
+    <Property Name="date de naissance " Type="date" />
+    <Property Name="ville de naissance" Type="nvarchar" MaxLength="50" />
+    <Property Name="nationalite" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="model">
+    <Key>
+      <PropertyRef Name="marque" />
+    </Key>
+    <Property Name="marque" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="carburant" Type="nvarchar" MaxLength="50" />
+    <Property Name="model" Type="date" />
+    <Property Name="asssurance" Type="datetime" />
+    <Property Name="prochain assurance" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'gest_de_locations_des_voitures.dbo.vehicule' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vehicule">
+          <Property Name="Immatriculation" Type="nvarchar" MaxLength="50" />
+          <Property Name="marque" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+  <Association Name="FK__client__cin__267ABA7A">
+    <End Role="identite" Type="Self.identite" Multiplicity="0..1" />
+    <End Role="client" Type="Self.client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="identite">
+        <PropertyRef Name="cin" />
+      </Principal>
+      <Dependent Role="client">
+        <PropertyRef Name="cin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'gest_de_locations_des_voitures.dbo.vehicule' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__vehicule__marque__2E1BDC42" />-->
+  <Association Name="FK_identite_cin">
+    <End Role="identite" Type="Self.identite" Multiplicity="1" />
+    <End Role="identite1" Type="Self.identite" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="identite">
+        <PropertyRef Name="cin" />
+      </Principal>
+      <Dependent Role="identite1">
+        <PropertyRef Name="cin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_numèclient">
+    <End Role="client" Type="Self.client" Multiplicity="0..1" />
+    <End Role="contrat" Type="Self.contrat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="num" />
+      </Principal>
+      <Dependent Role="contrat">
+        <PropertyRef Name="numcl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_numero_client">
+    <End Role="client" Type="Self.client" Multiplicity="0..1" />
+    <End Role="contrat" Type="Self.contrat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="num" />
+      </Principal>
+      <Dependent Role="contrat">
+        <PropertyRef Name="numcl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="gest_de_locations_des_voituresModelStoreContainer">
+    <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="contrat" EntityType="Self.contrat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="facture" EntityType="Self.facture" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="identite" EntityType="Self.identite" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="model" EntityType="Self.model" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__client__cin__267ABA7A" Association="Self.FK__client__cin__267ABA7A">
+      <End Role="identite" EntitySet="identite" />
+      <End Role="client" EntitySet="client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_identite_cin" Association="Self.FK_identite_cin">
+      <End Role="identite" EntitySet="identite" />
+      <End Role="identite1" EntitySet="identite" />
+    </AssociationSet>
+    <AssociationSet Name="fk_numèclient" Association="Self.fk_numèclient">
+      <End Role="client" EntitySet="client" />
+      <End Role="contrat" EntitySet="contrat" />
+    </AssociationSet>
+    <AssociationSet Name="fk_numero_client" Association="Self.fk_numero_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="contrat" EntitySet="contrat" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

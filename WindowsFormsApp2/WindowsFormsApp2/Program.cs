@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp2
+{
+    static class Program
+    {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            // Application.Run(new Loading());
+
+            Application.Run(new Form1());
+            // Application.Run(new register());
+            //Application.Run(new login());
+            //Application.Run(new input_nation());
+            //Application.Run(new client());
+            // Application.Run(new vehicule());
+            //Application.Run(new input_nation());
+            //Application.Run(new contrat());
+           // Application.Run(new depannage());
+
+
+
+
+
+
+
+        }
+    }
+}

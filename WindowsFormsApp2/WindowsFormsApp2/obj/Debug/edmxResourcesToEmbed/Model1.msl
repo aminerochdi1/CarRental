@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="gest_de_locations_des_voituresModelStoreContainer" CdmEntityContainer="gest_de_locations_des_voituresEntities">
+    <EntitySetMapping Name="clients">
+      <EntityTypeMapping TypeName="gest_de_locations_des_voituresModel.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="code_postal" ColumnName="code postal" />
+          <ScalarProperty Name="ville" ColumnName="ville" />
+          <ScalarProperty Name="rue" ColumnName="rue" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="num_de_permis_" ColumnName="num de permis " />
+          <ScalarProperty Name="date_de_permis" ColumnName="date de permis" />
+          <ScalarProperty Name="cin" ColumnName="cin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contrats">
+      <EntityTypeMapping TypeName="gest_de_locations_des_voituresModel.contrat">
+        <MappingFragment StoreEntitySet="contrat">
+          <ScalarProperty Name="numero_de_contrat" ColumnName="numero de contrat" />
+          <ScalarProperty Name="date_de_depart_" ColumnName="date de depart " />
+          <ScalarProperty Name="date_de_retour_" ColumnName="date de retour " />
+          <ScalarProperty Name="numcl" ColumnName="numcl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="factures">
+      <EntityTypeMapping TypeName="gest_de_locations_des_voituresModel.facture">
+        <MappingFragment StoreEntitySet="facture">
+          <ScalarProperty Name="numero_de_facture_" ColumnName="numero de facture " />
+          <ScalarProperty Name="date_de_facture" ColumnName="date de facture" />
+          <ScalarProperty Name="compteur_km" ColumnName="compteur km" />
+          <ScalarProperty Name="montant" ColumnName="montant" />
+          <ScalarProperty Name="montant_a_paye_apres_reduction" ColumnName="montant a paye apres reduction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="identites">
+      <EntityTypeMapping TypeName="gest_de_locations_des_voituresModel.identite">
+        <MappingFragment StoreEntitySet="identite">
+          <ScalarProperty Name="cin" ColumnName="cin" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="date_de_naissance_" ColumnName="date de naissance " />
+          <ScalarProperty Name="ville_de_naissance" ColumnName="ville de naissance" />
+          <ScalarProperty Name="nationalite" ColumnName="nationalite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="models">
+      <EntityTypeMapping TypeName="gest_de_locations_des_voituresModel.model">
+        <MappingFragment StoreEntitySet="model">
+          <ScalarProperty Name="marque" ColumnName="marque" />
+          <ScalarProperty Name="carburant" ColumnName="carburant" />
+          <ScalarProperty Name="model1" ColumnName="model" />
+          <ScalarProperty Name="asssurance" ColumnName="asssurance" />
+          <ScalarProperty Name="prochain_assurance" ColumnName="prochain assurance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
